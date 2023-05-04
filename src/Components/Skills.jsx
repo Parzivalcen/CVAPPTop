@@ -31,23 +31,18 @@ class Skills extends Component {
     })
   }
   render (){
-    const {skills} = this.state;
-    const {skill} = this.state;
-
-    const skillsComonents = 
-    <div>
-      {skills.map((skill) => <p>{skill.text}</p>)}
-    </div>
-
+    const {skills} = this.props.Skills;
+    const {skill} = this.props.Skills;
+// add a place where you can delete the skill, in case they are wrong
     return(
       <div>
-        <form onSubmit={this.onSubmit}>
+        <form onSubmit={e=>this.props.handleSubmit(e, 'skills')}>
           <label  htmlFor="skills">Enter your Skills: </label>
-          <input value={skill.text} onChange={this.onChange} type="text" name="skills"  required
+          <input 
+          value={skill.text} onChange={this.props.handleChange} type="text" name="skills"  required
             />
           <button>add skill</button>
         </form>
-        {skillsComonents}
       </div>
     )
   }

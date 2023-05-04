@@ -3,11 +3,54 @@
   margin: 0 auto;
   padding: 2rem;
 }
-
+/* BASIC INFORMATION */
 .basicInfoForm{
   display: flex;
   flex-direction: column;
 }
+.info-container{
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+.input{
+  padding: .7rem;
+  border:1px solid white;
+  border-radius: 5px;
+  width: 100%;
+}
+.name-container {
+  position: relative;
+}
+
+.label {
+  position: absolute;
+  top: 50%;
+  left: 10px;
+  transform: translateY(-50%);
+  color: #aaa;
+  pointer-events: none;
+  transition: all 0.2s ease-out;
+}
+/* Age */
+
 .error{
   color: red; 
+}
+
+/* tree dot menu */
+.tree-dots{
+  background: transparent;
+  background-color: white;
+  -webkit-mask-image: url(./assets/treeDots.svg) ;
+  mask-image: url(./assets/treeDots.svg) ;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  width: 4vh;
+  height: 4vh;
+  border: 0;
+  cursor: pointer;
+}
+.hide{
+  display: none;
 }

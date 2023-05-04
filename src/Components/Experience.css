@@ -1,0 +1,6 @@
+.textarea{
+  display: block;
+  border: 1px solid lime;
+  width: 100%;
+  min-height: 10vh;
+}

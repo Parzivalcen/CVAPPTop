@@ -1,31 +1,55 @@
 import { Component } from 'react'
 
 class GeneralInfo extends Component {
-  constructor(){
-    super();
-    this.state = {
-      editing: true,
-    }
-  }
   render (){
-    const {editing} = this.state
     
     const {generalInfo} = this.props
-    const Component = editing ? 
-    <form onSubmit={this.handleClick} className='basicInfoForm'>
+    const Component = 
+  <form className='basicInfoForm'>
       <h2>Enter your Basic Information</h2>
       {/* name */}
-      <div>
-        <label  htmlFor="name">Full Name: </label>
-        <input value={generalInfo.name} onChange={this.props.handleChange} type="text" name="name"  required
+      <div className='name-input-container input-container'>
+        <div className='name-container info-container'>
+
+          <label style={generalInfo.name !== '' ? {display:'none'}:{display:''}} className='name-label label' htmlFor="name">Full Name: </label>
+          <input value={generalInfo.name} onChange={this.props.handleChange} type="text" name="name"  required
+          className='name input'
           />
+        </div>
           {generalInfo.errors.name && <p className='error'>Please enter your name</p>}
         </div>
       {/* age */}
-      <div>
-        <label htmlFor="age">Age </label>
-        <input value={generalInfo.age} onChange={this.props.handleChange} type="number" name="age"  required/>
+      <div className='age-input-container input-container'>
+        <div className='age-container info-container'>
+          <label 
+          style={generalInfo.age === 0 || generalInfo.age === '' ? {display:''}:{display:'none'}}
+          htmlFor="age" 
+          className='age-label label'>Age </label>
+
+          <input 
+          value={generalInfo.age === 0 ? '':generalInfo.age} 
+          onChange={this.props.handleChange} 
+          type="number" name="age" className='age input'  
+          required/>
+        </div>
         {generalInfo.errors.age && <p className='error'>Please enter your age</p>}
+      </div>
+      {/* city */}
+      <div>
+        <div className="city-input-container input-container">
+          <div className="city-container info-container">
+            <label 
+            htmlFor="city"
+            style={generalInfo.city === ''?{display:''}:{display:'none'}}
+            className='label'>City </label>
+            <input 
+            className='input'
+            value={generalInfo.city} 
+            onChange={this.props.handleChange} 
+            type="text" name="city"  required/>
+          </div>
+        {generalInfo.errors.city && <p className='error'>Please enter your city</p>}
+        </div>
       </div>
       {/* country */}
       <div>
@@ -39,15 +63,8 @@ class GeneralInfo extends Component {
         <input value={generalInfo.phone} onChange={this.props.handleChange} type="text" name="phone" required />
         {generalInfo.errors.phone && <p className='error'>Please enter your phone number</p>}
       </div>
-      <button type='submit'>save</button>
-  </form> : 
-  <div>
-    <h3 className='infoData name'>{generalInfo.name}</h3>
-    <h3 className='infoData age'>{generalInfo.age}</h3>
-    <h3 className='infoData country'>{generalInfo.country}</h3>
-    <h3 className='infoData phone'>{generalInfo.phone}</h3>
-    <button onClick={this.handleClick}>edit</button>
-</div>
+  </form> 
+
     return(
       <div>
         {Component}
